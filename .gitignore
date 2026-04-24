@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+assets/motions/
+
+# Virtual Environments
+.venv
+
+# IDE
+.vscode/settings.json
+
+# Log files, settings
+imgui.ini
+
+# Local workspace artifacts
+.codex
+.git.backup*/
+210707.tar.gz
+assets/video/
+humanoid/
+output_ik-retarget/
+output_ik-retarget-kine/
+output_ik_retarget_wxyz/

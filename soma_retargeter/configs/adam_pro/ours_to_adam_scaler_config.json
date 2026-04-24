@@ -1,0 +1,266 @@
+{
+    "robot_type": "adam_pro",
+    "human_root_name": "Hips",
+    "human_height_assumption": 1.68,
+    "joint_scales": {
+        "Hips": 1.001224,
+        "Spine1": 0.584554,
+        "Head": 1.12,
+        "LeftUpLeg": 1.893109,
+        "RightUpLeg": 1.893109,
+        "LeftLeg": 1.14755,
+        "RightLeg": 1.14755,
+        "LeftFoot": 1.00063,
+        "RightFoot": 1.00063,
+        "LeftToeBase": 1.05,
+        "RightToeBase": 1.05,
+        "LeftArm": 1.056444,
+        "RightArm": 1.055564,
+        "LeftForeArm": 1.03056,
+        "RightForeArm": 1.03056,
+        "LeftHand": 1.136381,
+        "RightHand": 1.136381
+    },
+    "joint_parents": {
+        "Hips": "",
+        "Spine1": "Hips",
+        "Head": "Spine1",
+        "LeftUpLeg": "Hips",
+        "RightUpLeg": "Hips",
+        "LeftLeg": "LeftUpLeg",
+        "RightLeg": "RightUpLeg",
+        "LeftFoot": "LeftLeg",
+        "RightFoot": "RightLeg",
+        "LeftToeBase": "LeftFoot",
+        "RightToeBase": "RightFoot",
+        "LeftArm": "Spine1",
+        "RightArm": "Spine1",
+        "LeftForeArm": "LeftArm",
+        "RightForeArm": "RightArm",
+        "LeftHand": "LeftForeArm",
+        "RightHand": "RightForeArm"
+    },
+    "joint_offsets": {
+        "Hips": [
+            [
+                0.0,
+                0.0,
+                0.004
+            ],
+            [
+                0,
+                0,
+                0,
+                1.0
+            ]
+        ],
+        "LeftUpLeg": [
+            [
+                0.0,
+                0.0,
+                -0.05
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "LeftLeg": [
+            [
+                -0.00,
+                0.0,
+                -0.000
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "LeftFoot": [
+            [
+                -0.00,
+                0.0,
+                -0.00
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "LeftToeBase": [
+            [
+                0.0,
+                0.0,
+                -0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "RightUpLeg": [
+            [
+                0.0,
+                0.0,
+                -0.05
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "RightLeg": [
+            [
+                -0.00,
+                -0.0,
+                -0.00
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "RightFoot": [
+            [
+                -0.00,
+                -0.0,
+                -0.00
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "RightToeBase": [
+            [
+                0.0,
+                0.0,
+                -0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "Spine1": [
+            [
+                0.0,
+                0.000,
+                -0.00
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "Head": [
+            [
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ],
+        "LeftArm": [
+            [
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ],
+        "LeftForeArm": [
+            [
+                0.00,
+                -0.0,
+                -0.0
+            ],
+            [
+                0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ],
+        "LeftHand": [
+            [
+                -0.0,
+                -0.0,
+                -0.0
+            ],
+            [
+                0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ],
+        "RightArm": [
+            [
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                -0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ],
+        "RightForeArm": [
+            [
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                -0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ],
+        "RightHand": [
+            [
+                -0.0,
+                0.0,
+                -0.0
+            ],
+            [
+                -0.70710678,
+                0,
+                0,
+                0.70710678
+            ]
+        ]
+    }
+}

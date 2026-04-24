@@ -1,0 +1,14 @@
+{
+	"import_folder": "assets/motions/converted_bvh_data",
+	"export_folder": "assets/motions/adam_pkl",
+	"batch_size": 16,
+	"runtime_device": "cuda",
+	"execution_mode": "gpu_parallel",
+	"viewer_fps": 120,
+	"viewer_vsync": false,
+	"viewer_robot_offset": [1.0, 0.0, 0.0],
+	"retargeter": "Newton",
+	"retarget_source": "ours",
+	"retarget_target": "adam_pro",
+	"retarget_source_facing_direction": "ours"
+}
