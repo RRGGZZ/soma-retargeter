@@ -67,6 +67,17 @@ def _resolve_viewer_robot_offset(config: dict):
         return default
 
 
+def _resolve_export_settings(config: dict):
+    """Resolve export root and whether CSV export should be skipped."""
+    export_folder = str(config.get("export_folder", "")).strip()
+    if len(export_folder) == 0:
+        raise ValueError("[ERROR]: No export folder specified.")
+
+    export_path = pathlib.Path(export_folder).expanduser()
+    export_pkl_only = export_path.name.endswith("_pkl")
+    return export_path, export_pkl_only
+
+
 class Viewer:
     def __init__(self, viewer, config):
         self.viewer = viewer
@@ -575,15 +586,14 @@ class Viewer:
             exit(-1)
 
         import_path = pathlib.Path(self.config['import_folder'])
-        if len(self.config['export_folder']) == 0:
-            print("[ERROR]: No export folder specified.")
+        try:
+            export_path, export_pkl_only = _resolve_export_settings(self.config)
+        except ValueError as exc:
+            print(str(exc))
             exit(-1)
-
-        export_path = pathlib.Path(self.config['export_folder'])
         if not export_path.is_dir():
             print(f"[WARNING]: Export folder does not exist! Creating new folder at {str(export_path)}!")
             export_path.mkdir(parents=True, exist_ok=True)
-        export_pkl_only = export_path.name.endswith("_pkl")
         if export_pkl_only:
             print(f"[INFO]: PKL-only export mode enabled for folder '{export_path}'.")
 
@@ -672,17 +682,8 @@ class Viewer:
                         dst_csv.parent.mkdir(parents=True, exist_ok=True)
                         csv_utils.save_csv(dst_csv, csv_buffer, csv_config)
 
-                    # Save PKL
-                    if retarget_target == 'unitree_g1':
-                        pkl_export_path = pathlib.Path("assets/motions/g1_pkl")
-                    elif retarget_target == 'adam_pro':
-                        pkl_export_path = pathlib.Path("assets/motions/adam_pkl")
-                    elif retarget_target == 'kai':
-                        pkl_export_path = pathlib.Path("assets/motions/kai_pkl")
-                    else:
-                        pkl_export_path = export_path
-                        
-                    dst_pkl = pkl_export_path / rel_path.with_suffix(".pkl")
+                    # Save PKL to the configured export root.
+                    dst_pkl = export_path / rel_path.with_suffix(".pkl")
                     dst_pkl.parent.mkdir(parents=True, exist_ok=True)
                     pkl_utils.save_pkl(
                         dst_pkl,

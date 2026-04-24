@@ -109,7 +109,10 @@ cd /home/humanoid/rgz_work/soma-retargeter
 PYTHONPATH=. python -m app.bvh_to_csv_converter --config ./assets/default_bvh_to_csv_converter_config.json --viewer null
 ```
 
-Batch mode recursively finds all `.bvh` files in the import folder, processes them in configurable batch sizes, and writes CSV files to the export folder mirroring the input directory structure.
+Batch mode recursively finds all `.bvh` files in the import folder, processes them in configurable batch sizes, and writes outputs to `export_folder` while mirroring the input directory structure.
+
+If `export_folder` ends with `_pkl`, the converter runs in PKL-only mode and writes only `.pkl` files.
+Otherwise, it writes both `.csv` and `.pkl` files to the configured export directory.
 
 ## Code Overview
 
