@@ -67,6 +67,31 @@ def _resolve_viewer_robot_offset(config: dict):
         return default
 
 
+def _apply_shard_filter(motion_files: list, config: dict) -> list:
+    """Filter motion_files to a single shard using alternating-index assignment.
+
+    If ``shard_index`` and ``shard_count`` are present in *config*, returns
+    only the files whose position in the sorted list satisfies
+    ``index % shard_count == shard_index``.  When either key is absent or
+    ``shard_count <= 1``, the original list is returned unchanged (backward
+    compatible with non-sharded runs).
+    """
+    shard_index = config.get("shard_index")
+    shard_count = config.get("shard_count")
+    if shard_index is None or shard_count is None:
+        return motion_files
+    shard_index = int(shard_index)
+    shard_count = int(shard_count)
+    if shard_count <= 1:
+        return motion_files
+    filtered = [f for i, f in enumerate(motion_files) if i % shard_count == shard_index]
+    print(
+        f"[INFO]: Shard {shard_index}/{shard_count}: "
+        f"selected {len(filtered)} of {len(motion_files)} files."
+    )
+    return filtered
+
+
 def _resolve_export_settings(config: dict):
     """Resolve export root and whether CSV export should be skipped."""
     export_folder = str(config.get("export_folder", "")).strip()
@@ -611,6 +636,10 @@ class Viewer:
 
         # Sort files based on size (largest first)
         motion_files.sort(key=lambda p: p.stat().st_size, reverse=True)
+        motion_files = _apply_shard_filter(motion_files, self.config)
+        if len(motion_files) == 0:
+            print("[INFO]: Shard is empty. Nothing to process. Exiting.")
+            return
         batches = [motion_files[i:i + batch_size] for i in range(0, len(motion_files), batch_size)]
         
         retarget_source = self.config['retarget_source']

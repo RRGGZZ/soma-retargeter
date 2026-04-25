@@ -44,3 +44,8 @@ warp-lang = { index = "nvidia" }
 name = "nvidia"
 url = "https://pypi.nvidia.com"
 explicit = true
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]

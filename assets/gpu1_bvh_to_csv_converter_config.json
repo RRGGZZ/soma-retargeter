@@ -1,0 +1,16 @@
+{
+	"import_folder": "/mnt/data1/rgz/soma_uniform/bvh",
+	"export_folder": "/mnt/data1/rgz/soma-retargeter/adam_soma_pkl",
+	"batch_size": 256,
+	"runtime_device": "cuda:1",
+	"execution_mode": "gpu_parallel",
+	"viewer_fps": 120,
+	"viewer_vsync": false,
+	"viewer_robot_offset": [1.0, 0.0, 0.0],
+	"retargeter": "Newton",
+	"retarget_source": "soma",
+	"retarget_target": "adam_pro",
+	"retarget_source_facing_direction": "Mujoco",
+	"shard_index": 1,
+	"shard_count": 2
+}
