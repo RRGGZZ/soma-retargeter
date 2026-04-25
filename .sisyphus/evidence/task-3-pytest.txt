@@ -1,0 +1,20 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /mnt/data1/rgz/soma-retargeter/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /mnt/data1/rgz/soma-retargeter
+configfile: pyproject.toml
+collecting ... collected 11 items
+
+tests/test_shard_selection.py::test_no_shard_keys_returns_full_list PASSED [  9%]
+tests/test_shard_selection.py::test_shard_count_one_returns_full_list PASSED [ 18%]
+tests/test_shard_selection.py::test_shard0_gets_even_indices PASSED      [ 27%]
+tests/test_shard_selection.py::test_shard1_gets_odd_indices PASSED       [ 36%]
+tests/test_shard_selection.py::test_disjoint_union_equals_full_list PASSED [ 45%]
+tests/test_shard_selection.py::test_odd_file_count_shard0_gets_more PASSED [ 54%]
+tests/test_shard_selection.py::test_single_file_shard1_is_empty PASSED   [ 63%]
+tests/test_shard_selection.py::test_single_file_shard0_gets_it PASSED    [ 72%]
+tests/test_shard_selection.py::test_missing_shard_index_returns_full_list PASSED [ 81%]
+tests/test_shard_selection.py::test_missing_shard_count_returns_full_list PASSED [ 90%]
+tests/test_shard_selection.py::test_order_preserved_within_shard PASSED  [100%]
+
+============================== 11 passed in 5.05s ==============================

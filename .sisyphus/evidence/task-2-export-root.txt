@@ -1,0 +1,27 @@
+=== Export Root Safety Analysis ===
+Date: 2026-04-25
+
+== Export Path Derivation (bvh_to_csv_converter.py:675-688) ==
+  rel_path = pathlib.Path(batch[i]).relative_to(import_path)
+  dst_pkl = export_path / rel_path.with_suffix(".pkl")
+
+== Key Property ==
+  import_path is set from config["import_folder"] = "/mnt/data1/rgz/soma_uniform/bvh"
+  This is the FULL dataset root — NOT a subset subdirectory.
+  Shard filtering happens AFTER discovery, reducing motion_files list in memory only.
+  The import_path variable stays unchanged, so relative_to() still computes correctly.
+
+== Shared Export Root Safety ==
+  export_folder = "/mnt/data1/rgz/soma-retargeter/adam_soma_pkl"
+  Since shard 0 and shard 1 process DISJOINT input files (alternating indices),
+  they write to DISJOINT output paths (rel_path is unique per input file).
+  No two processes write to the same .pkl destination.
+
+== Collision Risk ==
+  NONE — provided shard_index and shard_count are correctly applied before batching.
+  mkdir(parents=True, exist_ok=True) is already used for each output dir (line 687),
+  so concurrent directory creation is safe.
+
+== Confirmed: import_folder is NOT rewritten to a subset folder ==
+  The filtering is purely in-memory list slicing.
+  Both scripts see the same import_folder and export_folder paths in config.

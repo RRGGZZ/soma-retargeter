@@ -1,0 +1,16 @@
+Scanning /mnt/data1/rgz/soma_uniform/bvh ...
+Total .bvh files: 142220
+shard0 count: 71110
+shard1 count: 71110
+intersection size: 0  (must be 0)
+union == full list: True  (must be True)
+shard0+shard1 = 142220 == total 142220: True
+shard0 sample: ['dancecards1_CD_injured_L_leg_001__A006_M.bvh', 'dancecards1_CD_injured_L_leg_001__A008_M.bvh', 'dancecards1_CD_injured_R_leg_001__A008_M.bvh']
+shard1 sample: ['dancecards1_CD_injured_L_leg_001__A006.bvh', 'dancecards1_CD_injured_L_leg_001__A008.bvh', 'dancecards1_CD_injured_R_leg_001__A008.bvh']
+export path collision (sample 5+5): 0  (must be 0)
+
+=== SHARED EXPORT ROOT SAFETY ===
+Both processes write to /mnt/data1/rgz/soma-retargeter/adam_soma_pkl
+Since shard0 and shard1 process disjoint input files, all output .pkl paths are disjoint.
+mkdir(parents=True, exist_ok=True) in the converter handles concurrent directory creation safely.
+No file collision is possible.

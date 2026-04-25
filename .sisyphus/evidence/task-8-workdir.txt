@@ -1,0 +1,14 @@
+=== Working Directory Verification ===
+
+Both scripts use:
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  cd "$SCRIPT_DIR"
+
+Test: resolved SCRIPT_DIR from absolute path /mnt/data1/rgz/soma-retargeter/run_gpu0.sh
+Result: SCRIPT_DIR=/mnt/data1/rgz/soma-retargeter
+
+Scripts can be launched from any directory via absolute path:
+  bash /mnt/data1/rgz/soma-retargeter/run_gpu0.sh
+  bash /mnt/data1/rgz/soma-retargeter/run_gpu1.sh
+
+VERDICT: PASS — no hidden workdir dependency.

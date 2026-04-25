@@ -1,0 +1,18 @@
+=== Source Extension Validation for soma-retargeter ===
+Date: 2026-04-25
+
+Config: assets/default_bvh_to_csv_converter_config.json
+  retarget_source: "soma"
+
+Extension logic (bvh_to_csv_converter.py line 606):
+  source_ext = "*.npz" if retarget_source == "npz" else "*.bvh"
+  => retarget_source is "soma" (not "npz"), so source_ext = "*.bvh"
+
+File counts under /mnt/data1/rgz/soma_uniform/bvh:
+  *.bvh files: 142220
+  *.npz files: 0
+
+=== CONCLUSION ===
+The dataset contains 142220 .bvh files. The converter will discover all of them.
+Shard 0 (cuda:0) will process files at sorted indices 0,2,4,... => ~71110 files
+Shard 1 (cuda:1) will process files at sorted indices 1,3,5,... => ~71110 files

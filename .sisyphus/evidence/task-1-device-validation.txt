@@ -1,0 +1,25 @@
+=== Warp Device Validation for soma-retargeter ===
+Date: 2026-04-25
+Warp version: 1.12.0
+CUDA Toolkit: 12.9 | Driver: 12.8
+
+Available devices:
+  "cpu"    : x86_64
+  "cuda:0" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:1" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:2" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:3" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:4" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:5" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:6" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+  "cuda:7" : NVIDIA GeForce RTX 4090 (24 GiB, sm_89)
+
+Test Results:
+  wp.ScopedDevice("cuda:0") -> OK (device = cuda:0)
+  wp.ScopedDevice("cuda:1") -> OK (device = cuda:1)
+
+=== RECOMMENDATION ===
+Use "cuda:0" and "cuda:1" directly in runtime_device config key.
+NO need for CUDA_VISIBLE_DEVICES workaround.
+The converter's _resolve_runtime_settings() reads config["runtime_device"] directly,
+which is then passed to wp.ScopedDevice(runtime_device) at line 726.

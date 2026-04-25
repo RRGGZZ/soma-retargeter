@@ -1,0 +1,5 @@
+run_gpu0.sh: executable OK
+run_gpu1.sh: executable OK
+assets/gpu0_bvh_to_csv_converter_config.json: device=cuda:0 shard=0/2 OK
+assets/gpu1_bvh_to_csv_converter_config.json: device=cuda:1 shard=1/2 OK
+All launcher + config checks passed.

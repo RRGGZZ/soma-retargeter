@@ -1,0 +1,58 @@
+{
+  "active_plan": "/mnt/data1/rgz/adam-pro-spider/.sisyphus/plans/soma-retargeter-dual-gpu-bvh-sharding.md",
+  "started_at": "2026-04-25T12:31:36.829Z",
+  "session_ids": [
+    "ses_23bb19c69ffeBkkYBauSoWfs15",
+    "ses_23b3b9707ffeHurqn0TZnQUrLm",
+    "ses_23b3b6df5ffeGZpyr1kEiJIXzo",
+    "ses_23b3b4be6ffeJBCPbeTmp3pp9D",
+    "ses_23b3b4b8bffeiTHi9CF6CRpqda"
+  ],
+  "session_origins": {
+    "ses_23bb19c69ffeBkkYBauSoWfs15": "direct",
+    "ses_23b3b9707ffeHurqn0TZnQUrLm": "appended",
+    "ses_23b3b6df5ffeGZpyr1kEiJIXzo": "appended",
+    "ses_23b3b4be6ffeJBCPbeTmp3pp9D": "appended",
+    "ses_23b3b4b8bffeiTHi9CF6CRpqda": "appended"
+  },
+  "plan_name": "soma-retargeter-dual-gpu-bvh-sharding",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Validate runtime device syntax and source extension behavior",
+      "session_id": "ses_23b5ef970ffeZKwFnhWppUOPQ6",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-25T12:35:20.792Z"
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Design shard config contract and launcher layout",
+      "session_id": "ses_23b5add0cffeRVDR97u9hioJLl",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-25T12:39:49.637Z"
+    },
+    "todo:3": {
+      "task_key": "todo:3",
+      "task_label": "3",
+      "task_title": "Add automated tests for shard selection and edge cases",
+      "session_id": "ses_23b5726a3ffeia1sLayfcjBuHD",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-25T12:58:47.163Z"
+    },
+    "final-wave:f1": {
+      "task_key": "final-wave:f1",
+      "task_label": "F1",
+      "task_title": "**Plan Compliance Audit** — `oracle`",
+      "session_id": "ses_23b3b4be6ffeJBCPbeTmp3pp9D",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-25T13:11:58.866Z"
+    }
+  }
+}

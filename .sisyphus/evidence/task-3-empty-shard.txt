@@ -1,0 +1,11 @@
+=== EMPTY SHARD TEST ===
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /mnt/data1/rgz/soma-retargeter/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /mnt/data1/rgz/soma-retargeter
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/test_shard_selection.py::test_single_file_shard1_is_empty PASSED   [100%]
+
+============================== 1 passed in 5.04s ===============================

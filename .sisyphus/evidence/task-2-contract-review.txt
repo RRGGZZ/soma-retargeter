@@ -1,0 +1,71 @@
+=== Shard Config Contract + Launcher Layout ===
+Date: 2026-04-25
+
+== New Config File Paths ==
+  /mnt/data1/rgz/soma-retargeter/assets/gpu0_bvh_to_csv_converter_config.json
+  /mnt/data1/rgz/soma-retargeter/assets/gpu1_bvh_to_csv_converter_config.json
+
+== gpu0 Config (cuda:0, shard 0 of 2) ==
+{
+  "import_folder": "/mnt/data1/rgz/soma_uniform/bvh",
+  "export_folder": "/mnt/data1/rgz/soma-retargeter/adam_soma_pkl",
+  "batch_size": 256,
+  "runtime_device": "cuda:0",
+  "execution_mode": "gpu_parallel",
+  "viewer_fps": 120,
+  "viewer_vsync": false,
+  "viewer_robot_offset": [1.0, 0.0, 0.0],
+  "retargeter": "Newton",
+  "retarget_source": "soma",
+  "retarget_target": "adam_pro",
+  "retarget_source_facing_direction": "Mujoco",
+  "shard_index": 0,
+  "shard_count": 2
+}
+
+== gpu1 Config (cuda:1, shard 1 of 2) ==
+{
+  "import_folder": "/mnt/data1/rgz/soma_uniform/bvh",
+  "export_folder": "/mnt/data1/rgz/soma-retargeter/adam_soma_pkl",
+  "batch_size": 256,
+  "runtime_device": "cuda:1",
+  "execution_mode": "gpu_parallel",
+  "viewer_fps": 120,
+  "viewer_vsync": false,
+  "viewer_robot_offset": [1.0, 0.0, 0.0],
+  "retargeter": "Newton",
+  "retarget_source": "soma",
+  "retarget_target": "adam_pro",
+  "retarget_source_facing_direction": "Mujoco",
+  "shard_index": 1,
+  "shard_count": 2
+}
+
+== Launcher Script Paths ==
+  /mnt/data1/rgz/soma-retargeter/run_gpu0.sh   (shard 0, cuda:0)
+  /mnt/data1/rgz/soma-retargeter/run_gpu1.sh   (shard 1, cuda:1)
+
+== Launcher Command (run_gpu0.sh) ==
+  cd /mnt/data1/rgz/soma-retargeter
+  uv run python ./app/bvh_to_csv_converter.py \
+    --config ./assets/gpu0_bvh_to_csv_converter_config.json \
+    --viewer null
+
+== Launcher Command (run_gpu1.sh) ==
+  cd /mnt/data1/rgz/soma-retargeter
+  uv run python ./app/bvh_to_csv_converter.py \
+    --config ./assets/gpu1_bvh_to_csv_converter_config.json \
+    --viewer null
+
+== Minimal Config Delta from Default ==
+  Changed: import_folder, export_folder, runtime_device, shard_index (NEW), shard_count (NEW)
+  Unchanged: batch_size, execution_mode, viewer_fps, viewer_vsync, viewer_robot_offset,
+             retargeter, retarget_source, retarget_target, retarget_source_facing_direction
+
+== Shard Logic Contract ==
+  - Both processes discover the FULL file list (full rglob of import_folder)
+  - Both sort by file size descending (same rule as current converter line 613)
+  - Each process filters: motion_files = [f for i,f in enumerate(motion_files) if i % shard_count == shard_index]
+  - For 142220 files: shard 0 gets 71110 files (even indices), shard 1 gets 71110 files (odd indices)
+  - Fallback when shard_count absent or shard_index absent: full list used (backward compatible)
+  - Empty shard: print info message and exit 0 gracefully

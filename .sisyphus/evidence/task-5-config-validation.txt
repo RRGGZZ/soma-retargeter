@@ -1,0 +1,2 @@
+assets/gpu0_bvh_to_csv_converter_config.json -> device: cuda:0 shard: 0 / 2 import: /mnt/data1/rgz/soma_uniform/bvh
+assets/gpu1_bvh_to_csv_converter_config.json -> device: cuda:1 shard: 1 / 2 import: /mnt/data1/rgz/soma_uniform/bvh

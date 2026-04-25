@@ -114,6 +114,30 @@ Batch mode recursively finds all `.bvh` files in the import folder, processes th
 If `export_folder` ends with `_pkl`, the converter runs in PKL-only mode and writes only `.pkl` files.
 Otherwise, it writes both `.csv` and `.pkl` files to the configured export directory.
 
+### Dual-GPU batch conversion
+
+Process a large BVH dataset in parallel using two GPUs. This uses alternating-index sharding: files are sorted by size (largest first), then assigned to shards using even/odd indices.
+
+```bash
+# GPU 0 (cuda:0) - processes files at indices 0,2,4,...
+bash run_gpu0.sh
+
+# GPU 1 (cuda:1) - processes files at indices 1,3,5,...
+bash run_gpu1.sh
+```
+
+Or run both GPUs in parallel (e.g., in tmux):
+
+```bash
+bash run_gpu0.sh & bash run_gpu1.sh & wait
+```
+
+Output files are written to `adam_soma_pkl/` (PKL-only mode). Both GPUs write to the same output directory because each processes a disjoint set of input files.
+
+Config files:
+- `assets/gpu0_bvh_to_csv_converter_config.json` - cuda:0, shard 0/2
+- `assets/gpu1_bvh_to_csv_converter_config.json` - cuda:1, shard 1/2
+
 ## Code Overview
 
 ### `app/`

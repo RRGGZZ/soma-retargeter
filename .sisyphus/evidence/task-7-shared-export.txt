@@ -1,0 +1,1 @@
+Shared export safety: proven by disjoint input -> disjoint output paths
