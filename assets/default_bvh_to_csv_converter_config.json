@@ -1,7 +1,7 @@
 {
 	"import_folder": "/home/humanoid/rgz_work/soma_dataset/soma_uniform/bvh",
 	"export_folder": "/home/humanoid/rgz_work/soma-retargeter/assets/motions/adam_soma_pkl",
-	"batch_size": 16,
+	"batch_size": 256,
 	"runtime_device": "cuda",
 	"execution_mode": "gpu_parallel",
 	"viewer_fps": 120,
